@@ -55,7 +55,7 @@ app.get("/liststoragezones",(req,res)=>{
         method: 'GET',
         headers: {
             Accept: 'application/json',
-            AccessKey: '<your-access-key>' //Replace it with your access key which will be in the account section of BunnyCDN
+            AccessKey: '91f2250c-cad2-4752-9bc9-a2e6128134989a8dbe9a-1c6d-41d7-81df-d759ef460d3e' //Replace it with your access key which will be in the account section of BunnyCDN
         }
     };
     fetch(url, options)
@@ -72,11 +72,19 @@ app.get("/liststoragezones",(req,res)=>{
 /**
  * @swagger
  * /createstoragezone:
- *  post:
- *      description: Creating a storage zone
- *      responses:
- *         '200':
- *              description: Storage zone details
+ *   post:
+ *     description: Create a storage zone
+ *     parameters:
+ *      - name: Body
+ *        description: Enter Body
+ *        in: body
+ *        required: true
+ *        type: string
+ *  
+ * 
+ *     responses:
+ *       201:
+ *         description: Created
  */
 app.post("/createstoragezone",(req,res)=>{
     const url = 'https://api.bunny.net/storagezone';
@@ -85,14 +93,13 @@ app.post("/createstoragezone",(req,res)=>{
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            AccessKey: '<your-access-key>' //Replace it with your access key which will be in the account section of BunnyCDN
+            AccessKey: '91f2250c-cad2-4752-9bc9-a2e6128134989a8dbe9a-1c6d-41d7-81df-d759ef460d3e' //Replace it with your access key which will be in the account section of BunnyCDN
         },
-        body: JSON.stringify({
-            ReplicationRegions: ['NY'],
-            OriginUrl: 'https://murmuring-ravine-21909.herokuapp.com/',
-            Name: 'SampleStorageZone2',
-            Region: 'DE'
-        })
+        // body: JSON.stringify({
+        //     OriginUrl: '',
+        //     Name: '',
+        //     Region: ''
+        // })
     };
 
     fetch(url, options)
@@ -117,7 +124,7 @@ app.get("/listpullzones",(req,res)=>{
         method: 'GET',
         headers: {
             Accept: 'application/json',
-            AccessKey: '<your-access-key>' //Replace it with your access key which will be in the account section of BunnyCDN
+            AccessKey: '91f2250c-cad2-4752-9bc9-a2e6128134989a8dbe9a-1c6d-41d7-81df-d759ef460d3e' //Replace it with your access key which will be in the account section of BunnyCDN
         }
     };
 
@@ -131,11 +138,12 @@ app.get("/listpullzones",(req,res)=>{
 /**
  * @swagger
  * /linking:
- *  post:
- *      description: Creating new pull zone and linking it with the storage zone
- *      responses:
- *         '200':
- *              description: Pull zone details
+ *   post:
+ *     description: Create a pull zone
+ * 
+ *     responses:
+ *       201:
+ *         description: Created
  */
 app.post("/linking",(req,res)=>{
     const url = 'https://api.bunny.net/pullzone';
@@ -144,9 +152,9 @@ app.post("/linking",(req,res)=>{
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            AccessKey: '<your-access-key>' //Replace it with your access key which will be in the account section of BunnyCDN
+            AccessKey: '91f2250c-cad2-4752-9bc9-a2e6128134989a8dbe9a-1c6d-41d7-81df-d759ef460d3e' //Replace it with your access key which will be in the account section of BunnyCDN
         },
-        body: JSON.stringify({StorageZoneId: 60209, Name: 'SamplePullZone2'})
+        body: JSON.stringify({StorageZoneId: 60298, Name: 'SamplePullZone5'})
     };
 
     fetch(url, options)
