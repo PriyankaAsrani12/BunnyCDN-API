@@ -31,6 +31,20 @@ const swaggerOptions={
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+
+
+app.put("/uploadvideo",(req,res)=>{
+    const url = 'http://video.bunnycdn.com/library/2643/videos/e70b8e6c-50c0-4001-a783-10fcb95533f8';
+
+    const options = {method: 'PUT', headers: {'Content-Type': 'application/octet-stream',
+    AccessKey: 'f846f949-ff5f-42ab-9437d028fa69-1f6d-4c45' 
+    }};
+
+    fetch(url, options)
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.error('error:' + err));
+})
 //Routes
 //Fetching the list of storage zones
 /**
